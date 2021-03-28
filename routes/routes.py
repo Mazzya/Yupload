@@ -1,7 +1,8 @@
-from flask import render_template, redirect, url_for, jsonify, request
+from flask import render_template, redirect, url_for, jsonify, request, send_from_directory
 from app import app
 from werkzeug.utils import secure_filename
 import os
+from io import open
 
 ALLOWED_EXTENSIONS = set(["png", "jpg", "pdf", "gif"])
 
@@ -10,7 +11,7 @@ def allowed_file(filename):
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", files=showFiles())
 
 @app.route("/upload", methods = ["GET", "POST"])
 def uploadFile():
@@ -25,3 +26,16 @@ def uploadFile():
             f.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
             return "File uploaded"
     return redirect(url_for('home'))
+
+# Return files
+@app.route("/uploads/<filename>")
+def getFile(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+
+
+def showFiles():
+    path = "./content/"
+    dirs = os.listdir(path)
+    files = [file for file in dirs]
+    return files

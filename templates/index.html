@@ -52,6 +52,11 @@
           <br>
           <section class="has-text-centered">
             <p class="title">Files</p>
+            {% if files%}
+            {% for file in files %}
+            <li><a href="{{url_for('getFile', filename=file)}}" download>{{file}}</a></li>
+            {% endfor %}
+            {% endif %}
           </section>
       </div>
 </body>
