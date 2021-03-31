@@ -4,15 +4,23 @@ from werkzeug.utils import secure_filename
 import os
 from io import open
 
-ALLOWED_EXTENSIONS = set(["png", "jpg", "pdf", "gif"])
+ALLOWED_EXTENSIONS = set(["png", "jpg", "pdf", "gif", "PNG", "jpeg"])
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1] in ALLOWED_EXTENSIONS
+
+@app.errorhandler(404)
+def pageNotFound(error):
+    return render_template("pageNotFound.html")
 
 @app.route("/")
 def home():
     return render_template("index.html", files=showFiles())
 
+@app.route("/about")
+def aboutUs():
+    return render_template("about.html")
+    
 @app.route("/upload", methods = ["GET", "POST"])
 def uploadFile():
     if request.method == "POST":
@@ -24,7 +32,7 @@ def uploadFile():
         if f and allowed_file(f.filename):
             filename = secure_filename(f.filename)
             f.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-            return "File uploaded"
+            return redirect(url_for('home'))
     return redirect(url_for('home'))
 
 # Return files
@@ -35,6 +43,7 @@ def getFile(filename):
 
 
 def showFiles():
+    """ This function shows the files that exist in the directory"""
     path = "./content/"
     dirs = os.listdir(path)
     files = [file for file in dirs]

@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar has-text-cen" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="index.html">
+          <a class="navbar-item" href="{{url_for('home')}}">
             <p class="title">YUPLOAD</p>
           </a>
       
@@ -23,13 +23,10 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="index.html">
+            <a class="navbar-item" href="{{url_for('home')}}">
               Home
             </a>
-            <a class="navbar-item">
-              My files
-            </a>
-            <a class="navbar-item" href="about.html">
+            <a class="navbar-item" href="{{url_for('aboutUs')}}">
                 About us
             </a>
           </div>
