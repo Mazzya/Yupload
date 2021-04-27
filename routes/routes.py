@@ -12,10 +12,12 @@ def allowed_file(filename):
 
 @app.errorhandler(404)
 def pageNotFound(error):
+    """ This function handles the 404 error """
     return render_template("pageNotFound.html")
 
 @app.route("/")
 def home():
+    """ Home page """
     return render_template("index.html", files=showFiles())
 
 @app.route("/about")
@@ -38,7 +40,7 @@ def uploadFile():
             return redirect(url_for('home'))
     return redirect(url_for('home'))
 
-# Return files
+
 @app.route("/uploads/<filename>")
 def getFile(filename):
     """ Get files from directory 'content' """
