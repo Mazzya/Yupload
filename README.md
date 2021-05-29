@@ -7,7 +7,7 @@ It is necessary to have pipenv installed to be able to work with the project wit
 
 To install all the necessary packages, run the following command at the console: ```pipenv install -r requirements.txt```
 #### How can I run the application?
-It's very simple, from the application directory, open a console and run this command: ``` python run.py ```.
+It's very simple, from the application directory, open a console and run this command: ``` python run.py ```
 #### Where are my files kept?
 All the files that you are going to upload are saved in a folder called <b>content</b>. This folder is next to the application files.
 #### On what port is the application running?
