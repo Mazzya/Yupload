@@ -1,5 +1,11 @@
 # Yupload
 ### Yupload is a simple example of how to upload files with flask
+#### Requirements
+This project uses pipenv. 
+
+It is necessary to have pipenv installed to be able to work with the project without any problem, to install it execute the following command:```pip install pipenv```.
+
+To install all the necessary packages, run the following command at the console: ```pipenv install -r requirements.txt```
 #### How can I run the application?
 It's very simple, from the application directory, open a console and run this command: ``` python run.py ```.
 #### Where are my files kept?
