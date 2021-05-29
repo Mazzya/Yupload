@@ -1,5 +1,10 @@
 # Yupload
 ### Yupload is a simple example of how to upload files with flask
+#### Clone the repository
+```
+$ git clone https://github.com/Mazzya/Yupload.git
+```
+If you don't want to clone it, you can download it directly from [here](https://github.com/Mazzya/Yupload/archive/refs/heads/master.zip).
 #### Requirements
 This project uses pipenv. 
 
